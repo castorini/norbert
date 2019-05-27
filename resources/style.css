@@ -1,0 +1,134 @@
+@font-face {
+  font-family: "Lato";
+  src: url(fonts/Lato-Light.ttf) format("truetype");
+  font-weight: 150;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url(fonts/Lato-Regular.ttf) format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url(fonts/Lato-Medium.ttf) format("truetype");
+  font-weight: 250;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url(fonts/Lato-Semibold.ttf) format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url(fonts/Lato-Bold.ttf) format("truetype");
+  font-weight: 350;
+  font-style: normal;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #EAEAEA;
+	font-family: "Lato", sans-serif;
+	color: #2F2F2F;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	letter-spacing: 4px;
+	font-weight: 150;
+	font-size: 48px;
+}
+
+.container {
+	width: 60%;
+	margin: 0 auto;
+	background-color: white;
+	min-height: 100vh;
+	padding: 48px 32px;
+	box-sizing: border-box;
+}
+
+input[type="text"] {
+	margin-top: 48px;
+	padding: 8px 12px;
+	width: calc(100% - 308px);
+	font-family: "Lato", sans-serif;
+	font-weight: 200;
+	font-size: 24px;
+	box-sizing: border-box;
+	outline: none;
+	background-color: #EAEAEA;
+	border: 0px solid #2F2F2F;
+}
+
+input[type="text"].hits {
+	width: 150px;
+}
+
+button {
+	border: none;
+	cursor: pointer;
+	font-family: "Lato", sans-serif;
+	font-size: 24px;
+	font-weight: 350;
+	padding: 8px 12px;
+	outline: none;
+	background-color: #03A9F4;
+	width: 150px;
+	margin-left: 0px;
+	box-sizing: border-box;
+	color: white;
+	transition: background-color 0.5s;
+}
+
+button:hover {
+	background-color: #027EB7;
+}
+
+button:active {
+	background-color: #01547A
+}
+
+.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.progress {
+	margin-top: 4px;
+	height: 4px;
+	width: 100%;
+	background-color: #4CAF50;
+	transition: width 0.25s;
+}
+
+.results {
+	margin: 0;
+	margin-top: 24px;
+	padding: 0;
+}
+
+.result {
+	margin: 0;
+	margin-top: 24px;
+	list-style: none;
+	
+	padding: 24px;
+	box-sizing: border-box;
+	border: 1px solid #EAEAEA;
+	color: #2f2f2f;
+	font-size: 16px;
+	font-weight: 200;
+	line-height: 150%;
+}

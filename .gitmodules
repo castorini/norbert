@@ -1,0 +1,6 @@
+[submodule "dl4marco-bert"]
+	path = dl4marco-bert
+	url = https://github.com/nyu-dl/dl4marco-bert.git
+[submodule "anserini"]
+	path = anserini
+	url = https://github.com/castorini/anserini.git

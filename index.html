@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="resources/style.css">
+    <script src="resources/script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title>dl4marco-bert</title>
+</head>
+<body>
+    <script>
+    (function() {
+        document.addEventListener("click", function (event) {
+            if (event.target.matches(".search")) {
+                var queryInput = document.querySelectorAll(".query")[0];
+                var hitsInput = document.querySelectorAll(".hits")[0];
+                var searchButton = document.querySelectorAll(".search")[0];
+
+                queryInput.classList.add("disabled");
+                hitsInput.classList.add("disabled");
+                searchButton.classList.add("disabled");
+
+                var ul = document.querySelectorAll(".results")[0];
+                ul.innerHTML = "";
+
+                var query = document.querySelectorAll(".query")[0].value;
+                var hits = document.querySelectorAll(".hits")[0].value;
+
+                var duration = (10 + 2 * parseInt(hits)) * 10;
+                var percent = 0;
+                var interval = setInterval(animate, duration);
+                var progress = document.querySelectorAll(".progress")[0];
+                progress.style.width = "0%";
+
+                function animate() {
+                    if (percent == 100) {
+                        clearInterval(interval);
+                    } else {
+                        percent++;
+                        progress.style.width = percent + "%";
+                    }
+                }
+
+                var request = new XMLHttpRequest();
+                request.open("GET", "http://127.0.0.1:5000/predict?query=" + query + "&hits=" + hits, true);
+
+                request.onload = function() {
+                    queryInput.classList.remove("disabled");
+                    hitsInput.classList.remove("disabled");
+                    searchButton.classList.remove("disabled");
+                    
+                    progress.style.width = "100%";
+                    clearInterval(interval);
+
+                    if (request.status >= 200 && request.status < 400) {
+                        var response = JSON.parse(request.responseText);
+
+                        for (var i = 0; i < response.length; ++i) {
+                            var li = document.createElement("li");
+                            li.appendChild(document.createTextNode(response[i]));
+                            li.classList.add("result");
+                            ul.appendChild(li);
+                        }
+                    } else {}
+                };
+
+                request.send();
+            }
+        }, false);
+    })();
+    </script>
+    <div class="container">
+        <h1>DL4MARCO–BERT</h1>
+        <input class="query" type="text" placeholder="Enter a query" value="how do you say hello in German"/>
+        <input class="hits" type="text" placeholder="Hits" value="10"/>
+        <button class="search">Search</button>
+        <div class="progress"></div>
+
+        <ul class="results"></ul>
+    </div>
+</body>
+</html>

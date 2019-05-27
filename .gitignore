@@ -1,0 +1,6 @@
+model
+query.tf
+.DS_STORE
+*/.DS_STORE
+__pycache__
+*/__pycache__
